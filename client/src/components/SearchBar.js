@@ -1,6 +1,6 @@
 import React from "react";
 
-function SearchBar() {
+function SearchBar(props) {
   return (
     <div className="input-group flex-nowrap">
       <div className="input-group-prepend"></div>
@@ -8,10 +8,11 @@ function SearchBar() {
         type="text"
         className="form-control"
         placeholder="Type book title here"
-        onKeyPress={handleSearch}
+        onKeyPress={props.handleSearch}
       />
     </div>
   );
 }
 
 export default SearchBar;
+s;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+// import Card from "../components/card";
 
 export default function Search() {
   const [books, setBooks] = useState([]);
@@ -19,6 +20,12 @@ export default function Search() {
     });
   };
 
+  const bookImage = (book) => {
+    axios.get("/api/books", {
+      link: book.volumeInfo.imageLinks.thumbnail,
+    });
+  };
+
   const handleSave = (book) => {
     axios.post("/api/books", {
       title: book.volumeInfo.title,
@@ -34,8 +41,11 @@ export default function Search() {
             type="text"
             className="form-control"
             placeholder="Type book title here"
-            onKeyPress={handleSearch}
+            // onKeyPress={handleSearch}
           />
+          <button type="button" onClick={handleSearch}>
+            Search
+          </button>
         </div>
       </div>
 
@@ -45,10 +55,6 @@ export default function Search() {
             <div className="col-md-2"></div>
             <div className="card-body">
               <h6> {book.volumeInfo.title}</h6>
-              {/* <img
-                src={book.volumeInfo.imageLinks?.thumbnail}
-                alt="book cover"
-              /> */}
               <p> Written by: {book.volumeInfo.authors} </p>
               <p> {book.volumeInfo.description} </p>
               <p>

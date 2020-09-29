@@ -9,7 +9,7 @@ export default function Navbar() {
   // const saved = () => history.push("/saved");
 
   return (
-    <div>
+    <div className="grey darken-4-text">
       <nav>
         <div className="nav-wrapper">
           <Link to="/" className="brand-logo">
